@@ -15,8 +15,8 @@ int main()
    
    
    fpR = fopen("./tmp/test.txt", "r");
-   fscanf(fpR, "%s", buff);
-   printf("1: %s\n", buff );
+   //fscanf(fpR, "%s", buff);
+   //printf("1: %s\n", buff );
  
    fgets(buff, 255, (FILE*)fpR);
    printf("2: %s\n", buff );

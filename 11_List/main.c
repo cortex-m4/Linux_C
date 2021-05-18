@@ -12,7 +12,7 @@ typedef struct link_list{
 LinkList *head_list;
 /*
     链表初始化
-*/
+*/ 
 void linklistInit(LinkList **head)
 {
     *head = NULL;
@@ -216,7 +216,7 @@ LinkList *findLinkList(LinkList *head,LType to_find)
     return NULL;
 }
 /*
-    在指定位置之前插入指定元素（遍历）函数
+    在指定位置之前插入指定元素
     时间复杂度为O(n)
     head:被插的链表
     pos:插入的链表
@@ -352,13 +352,13 @@ int isEmptyLinkList(LinkList *head){
 /*
     返回链表元素的个数
 */
-size_t sizeofLinkList(LinkList *head){
+int sizeofLinkList(LinkList *head){
     //空链表返回0
     if(head == NULL)
     {
         return 0;
     }
-    size_t count = 0;
+    int count = 0;
     LinkList *temp = head;
     //遍历链表
     for(;temp != NULL;temp = temp->next)
@@ -407,9 +407,28 @@ void Test_BackDelete(){
     deleteBackList(&head_list);
     printList(head_list);
 }
+//删除指定元素测试
+void Test_MoveValue(LType dat){
+    Test_Header;
+    removeLinkListValue(&head_list,dat);
+    printList(head_list);
+}
+//添加指定元素测试
+void Test_AddValue(LType dat){
+    
+}
 void main(){
     Test_BackInsert();
+    printf("1_size:%d\n",sizeofLinkList(&head_list));
+    printf("head value is:%d\n",head_list->count);
     Test_FrontInsert();
+    printf("2_size:%d\n",sizeofLinkList(&head_list));
+    printf("head value is:%d\n",head_list->count);
+    Test_MoveValue(9);
     Test_FrontDelete();
+    printf("3_size:%d\n",sizeofLinkList(&head_list));
+    printf("head value is:%d\n",head_list->count);
     Test_BackDelete();
+    printf("4_size:%d\n",sizeofLinkList(&head_list));
+    printf("head value is:%d\n",head_list->count);
 }

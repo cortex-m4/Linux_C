@@ -18,7 +18,8 @@ void encode_buffer(void){
 	_hgf_temp_status_pakage.temp6=80;
 	_hgf_temp_status_pakage.temp7=90;
 	_hgf_temp_status_pakage.temp8=100;
-	_hgf_temp_status_pakage.car_num.arg="123123123";
+	strcpy(_hgf_temp_status_pakage.nowCarNum,"123123");
+	
 	printf("load pakage data\r\n");
 	memset(pb_buffer, 0, sizeof(pb_buffer));
 	printf("set buffer data\r\n");
