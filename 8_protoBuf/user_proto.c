@@ -13,11 +13,11 @@ void encode_buffer(void){
 	_hgf_temp_status_pakage.temp1=30;
 	_hgf_temp_status_pakage.temp2=40;
 	_hgf_temp_status_pakage.temp3=50;
-	_hgf_temp_status_pakage.temp4=60;
-	_hgf_temp_status_pakage.temp5=70;
-	_hgf_temp_status_pakage.temp6=80;
-	_hgf_temp_status_pakage.temp7=90;
-	_hgf_temp_status_pakage.temp8=100;
+	_hgf_temp_status_pakage.alarmTemp=60;
+	_hgf_temp_status_pakage.targetTemp=70;
+	_hgf_temp_status_pakage.refTemp=80;
+	_hgf_temp_status_pakage.settingTime=90;
+	_hgf_temp_status_pakage.realHotTimeMin=100;
 	strcpy(_hgf_temp_status_pakage.nowCarNum,"123123");
 	
 	printf("load pakage data\r\n");
