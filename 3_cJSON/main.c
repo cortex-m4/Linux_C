@@ -64,6 +64,12 @@ int main()
     char * json_str = "{\"status\":200,\"message\":null,\"data\":{\"rel\":1,\"relCode\":0,\"deviceSecret\":\"f091ee20562aff5768ca91b01c5de43e\",\"deviceName\":\"4e0aUETrJ4PZCUh8A471Vl\",\"productKey\":\"a1hGhCIRMxR\",\"version\":\"1\",\"port\":0,\"binSize\":0,\"crc\":0,\"filepath\":\"\"},\"rel\":true}";
 
     char json_outstr[30]={0};  //输出的目标值
+	
+	char *test_char;
+	
+	int test_int=250;
+	
+	int sprintf_size=0;
 
     root = cJSON_Parse(json_str);
     if(!root)
@@ -97,6 +103,11 @@ int main()
 
         printf("\r\n第一个出现{的位置为%d\r\n",strchr(json_str,'{'));
         printf("\r\n最后一个出现}的位置为%d\r\n",strrchr(json_str,'}'));
+		test_char=(char *)malloc(32);
+		sprintf_size=sprintf(test_char,"num is %d\r\n",test_int);
+		printf("data is:%s\r\n",test_char);
+		free(test_char);
+		printf("sprintf_size is %d",sprintf_size);
     }
     return 0;
 }

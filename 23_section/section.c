@@ -1,35 +1,6 @@
 #include <stdio.h>
 #include <string.h>
-
-#define __app_init_section      __attribute__((section(".usri_fn.")))
-
-#define MODE1   1
-
-#if     MODE1
-    typedef struct{
-        int (*func)(void);
-        char *name;
-    }_s_application_init;
-
-    #define __application_init(function,funcName) \
-        _s_application_init _s_a_init_##function  __app_init_section={function,funcName}
-
-    _s_application_init _init_start;//段".application_init"的起始地址，在*.lds文件中定义
-    _s_application_init _init_end;//段".application_init"的末尾地址，在*.lds文件中定义
-#else
-    typedef int (*_s_application_init)(void);
-
-    #define __application_init(function) \
-        _s_application_init _s_a_init_##function  __app_init_section=function
-        
-    _s_application_init _init_start;//段".application_init"的起始地址，在*.lds文件中定义
-    _s_application_init _init_end;//段".application_init"的末尾地址，在*.lds文件中定义
-
-#endif
-
-
-
-
+#include "section.h"
 
 
 static int application_start(void) {
@@ -70,15 +41,18 @@ static int application_end(void) {
     
     __application_init(application_init_b,"funB");
 #else
-    __application_init(application_start);
+    __application_init(application_start,0);
 
-    __application_init(application_init_a);
+    __application_init(application_init_a,0);
 
-    __application_init(application_init_b);
+    __application_init(application_init_b,0);
+    __application_init(application_init_c,0);
 
-    __application_init(application_init_c);
+     __application_init(application_end,1);
 
-    __application_init(application_end);
+   
+
+   
 
 #endif
  
@@ -110,3 +84,6 @@ int main(int argc, char **argv)
     printf("end\n");
     return 0;
 }
+
+
+
